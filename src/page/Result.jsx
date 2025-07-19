@@ -39,9 +39,10 @@ export default function Result() {
           Please wait {cooldown} seconds before classifying another image.
         </p>
       ) : (
-        <button className="light-btn" onClick={() => navigate("/")}>
-          Try Another Image
+        <button className="dark-btn" onClick={() => navigate("/classify")}>
+            Try Another Image
         </button>
+
       )}
     </div>
   );
