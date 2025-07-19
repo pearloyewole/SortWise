@@ -81,7 +81,7 @@ button:focus-visible {
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 5rem;
   font-weight: bold;
   margin-bottom: 1rem;
 }
@@ -142,4 +142,89 @@ button:focus-visible {
 
 .info-page button.dark-btn {
   margin-top: 1rem;
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw; 
+  background-color: #f6f8fa;
+}
+
+
+.card {
+  background-color: white;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.upload-label {
+  display: inline-block;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.upload-btn {
+  background-color: #0077cc;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.upload-btn:hover {
+  background-color: #005fa3;
+}
+
+.preview-container {
+  margin: 1rem 0;
+}
+
+.preview-img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.action-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.action-btn:hover:not(.disabled) {
+  background-color: #218838;
+}
+
+.disabled {
+  background-color: #a5d6a7;
+  cursor: not-allowed;
+}
+
+.error-text {
+  color: red;
+  margin-top: 1rem;
+  font-size: 0.95rem;
 }

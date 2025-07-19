@@ -1,34 +1,28 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./../index.css";
 
-const API_URL = "https://fastapi-classification.onrender.com/predict/"; // Update if your backend URL changes
+const API_URL = "https://fastapi-classification.onrender.com/predict/";
 
 export default function Classifier() {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
-  const [prediction, setPrediction] = useState("");
-  const [disposalInfo, setDisposalInfo] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  // When the user picks a file, save it and generate a preview URL
   const handleFileChange = (e) => {
     const f = e.target.files?.[0];
     if (!f) return;
     setFile(f);
     setPreview(URL.createObjectURL(f));
-    setPrediction("");
-    setDisposalInfo("");
     setError("");
   };
 
-  // Send the image to the backend and handle the JSON response
   const handleClassify = async () => {
     if (!file) return;
     setLoading(true);
     setError("");
-    setPrediction("");
-    setDisposalInfo("");
 
     try {
       const formData = new FormData();
@@ -39,14 +33,13 @@ export default function Classifier() {
         body: formData,
       });
 
-      if (!res.ok) {
-        throw new Error(`Server responded ${res.status}`);
-      }
+      if (!res.ok) throw new Error(`Server responded ${res.status}`);
 
       const { predicted_category, disposal_info } = await res.json();
 
-      setPrediction(predicted_category);
-      setDisposalInfo(disposal_info);
+      navigate("/result", {
+        state: { prediction: predicted_category, disposalInfo: disposal_info },
+      });
     } catch (err) {
       console.error(err);
       setError("Failed to classify image. Please try again.");
@@ -56,49 +49,33 @@ export default function Classifier() {
   };
 
   return (
-    <div className="classifier-page" style={{ padding: "2rem", textAlign: "center" }}>
-      <h2>Trash Classifier</h2>
+    <div className="page-container">
+      <div className="card">
+        <h1 className="title">Trash Classifier</h1>
 
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleFileChange}
-        style={{ margin: "1rem 0" }}
-      />
+        <p className="subtitle">Upload an image to find out how to dispose of your item properly.</p>
 
-      {preview && (
-        <div style={{ marginBottom: "1rem" }}>
-          <img
-            src={preview}
-            alt="preview"
-            style={{ maxWidth: "300px", borderRadius: "8px" }}
-          />
-        </div>
-      )}
+        <label className="upload-label">
+          <input type="file" accept="image/*" onChange={handleFileChange} hidden />
+          <span className="upload-btn">Choose Image</span>
+        </label>
 
-      <button
-        onClick={handleClassify}
-        disabled={!file || loading}
-        className="light-btn"
-      >
-        {loading ? "Classifying…" : "Classify"}
-      </button>
+        {preview && (
+          <div className="preview-container">
+            <img src={preview} alt="preview" className="preview-img" />
+          </div>
+        )}
 
-      {error && (
-        <p style={{ color: "red", marginTop: "1rem" }}>{error}</p>
-      )}
+        <button
+          onClick={handleClassify}
+          disabled={!file || loading}
+          className={`action-btn ${loading ? "disabled" : ""}`}
+        >
+          {loading ? "Classifying…" : "Classify"}
+        </button>
 
-      {prediction && (
-        <p style={{ marginTop: "1rem", fontSize: "1.25rem" }}>
-          🔍 Predicted Category: <strong>{prediction}</strong>
-        </p>
-      )}
-
-      {disposalInfo && (
-        <p style={{ marginTop: "0.5rem", fontStyle: "italic" }}>
-          {disposalInfo}
-        </p>
-      )}
+        {error && <p className="error-text">{error}</p>}
+      </div>
     </div>
   );
 }
