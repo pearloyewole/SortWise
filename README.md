@@ -1,3 +1,6 @@
+**SortWise** 
+
+
 A web app that classifies waste (e.g. plastic, glass, cardboard) using image or video input to guide users on proper disposal. The goal was to promote environmental sustainability through smart, accessible technology.
 Tools & Tech Used:
 
