@@ -1,16 +1,25 @@
-<<<<<<< HEAD
-# React + Vite
+Built an web app that classifies waste (e.g. plastic, glass, cardboard) using image or video input to guide users on proper disposal. The goal was to promote environmental sustainability through smart, accessible technology.
+Tools & Tech Used:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TensorFlow – Trained waste classification model
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+FastAPI – Served predictions via REST API
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# SortWise-
->>>>>>> af5dc33cb1e21458bd87db4defa8e7948fa859f0
+React – Built frontend for image/video upload & result display
+
+
+Axios – Connected frontend to backend
+
+
+Render – Hosted Python backend (free tier)
+
+
+Vercel – Deployed React frontend
+
+
+GitHub – Collaborated with a teammate using branches & pull requests
+
+
+PIL, OpenCV, NumPy – Image/video preprocessing in Python
