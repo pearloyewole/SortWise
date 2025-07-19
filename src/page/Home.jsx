@@ -31,7 +31,9 @@ export default function Home() {
           <Link to="/info">
             <button className="light-btn">Learn More</button>
           </Link>
-          <button className="dark-btn">Try it out</button>
+          <Link to="/classify">
+            <button className="dark-btn">Try it out</button>
+          </Link>
         </div>
       </div>
     </div>
