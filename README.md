@@ -1,4 +1,4 @@
-# SortWise
+# SortWise - Hackathon Project
 
 https://sort-wise.vercel.app/ 
 
