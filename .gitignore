@@ -25,4 +25,4 @@ dist-ssr
 
 .venv
 venv
-tf-venv
+tf-venvsrc/assets/garbage_classification_model_inception.h5
