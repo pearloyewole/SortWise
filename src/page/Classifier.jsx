@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./../index.css";
 
-const API_URL = "http://localhost:8000/predict"; // SNEHA: update when your REST API is ready
+const API_URL = "http://localhost:8000/predict/"; // Update if your backend URL changes
 
 export default function Classifier() {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [prediction, setPrediction] = useState("");
+  const [disposalInfo, setDisposalInfo] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -17,6 +18,7 @@ export default function Classifier() {
     setFile(f);
     setPreview(URL.createObjectURL(f));
     setPrediction("");
+    setDisposalInfo("");
     setError("");
   };
 
@@ -26,6 +28,7 @@ export default function Classifier() {
     setLoading(true);
     setError("");
     setPrediction("");
+    setDisposalInfo("");
 
     try {
       const formData = new FormData();
@@ -40,8 +43,10 @@ export default function Classifier() {
         throw new Error(`Server responded ${res.status}`);
       }
 
-      const { category } = await res.json();
-      setPrediction(category);
+      const { predicted_category, disposal_info } = await res.json();
+
+      setPrediction(predicted_category);
+      setDisposalInfo(disposal_info);
     } catch (err) {
       console.error(err);
       setError("Failed to classify image. Please try again.");
@@ -86,6 +91,12 @@ export default function Classifier() {
       {prediction && (
         <p style={{ marginTop: "1rem", fontSize: "1.25rem" }}>
           🔍 Predicted Category: <strong>{prediction}</strong>
+        </p>
+      )}
+
+      {disposalInfo && (
+        <p style={{ marginTop: "0.5rem", fontStyle: "italic" }}>
+          {disposalInfo}
         </p>
       )}
     </div>

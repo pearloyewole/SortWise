@@ -25,5 +25,7 @@ dist-ssr
 
 .venv
 venv
-tf-venvsrc/assets/garbage_classification_model_inception.h5
+tf-venv
+src/assets/garbage_classification_model_inception.h5
 garbage_classification_model_inception.h5
+__pycache__
