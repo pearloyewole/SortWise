@@ -176,16 +176,19 @@ button:focus-visible {
 }
 
 .upload-btn {
-  background-color: #0077cc;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  display: inline-block;
-  transition: background-color 0.3s;
+  border: 1px solid black;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 5px;
 }
 
 .upload-btn:hover {
-  background-color: #005fa3;
+  transition: color 0.3s;
+  border-color: #005fa3;
+  color:#005fa3;
 }
 
 .preview-container {
@@ -198,23 +201,26 @@ button:focus-visible {
 }
 
 .action-btn {
-  background-color: #28a745;
+  border: 1px solid black;
+  background-color: black;
   color: white;
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 5px;
   font-size: 1rem;
   cursor: pointer;
-  margin-top: 1rem;
   transition: background-color 0.3s;
 }
 
 .action-btn:hover:not(.disabled) {
-  background-color: #218838;
+  border-color: #218838;
+  color: #218838;
+  transition: color 0.3s;
 }
 
 .disabled {
-  background-color: #a5d6a7;
+  border-color: #a5d6a7;
   cursor: not-allowed;
 }
 
