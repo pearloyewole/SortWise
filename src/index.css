@@ -114,3 +114,32 @@ button:focus-visible {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.info-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: white;
+  color: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.info-page h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.info-page h3 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.info-page ul {
+  list-style: disc inside;
+  margin: 1rem 0;
+}
+
+.info-page button.dark-btn {
+  margin-top: 1rem;
+}
