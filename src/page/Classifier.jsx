@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./../index.css";
 
-const API_URL = "http://localhost:8000/predict/"; // Update if your backend URL changes
+const API_URL = "https://fastapi-classification.onrender.com/predict/"; // Update if your backend URL changes
 
 export default function Classifier() {
   const [file, setFile] = useState(null);
